@@ -24,6 +24,11 @@ app.use(morgan("combined"));
 //Routes
 
 
+app.listen(app.get("port"),()=>{
+    console.log("Servidor escuchando en el puerto",app.get("port"));
+});
+
+
 app.use("/api",indexrouter);
 
 
@@ -31,9 +36,6 @@ app.use("/api",indexrouter);
 export default app;
 
 
-/*app.listen(app.get("port"),()=>{
-    console.log("Servidor escuchando en el puerto",app.get("port"));
-});*/
 
 /*app.get("/",(req,res)=>{
     res.send("Hola Lizbeth Fabbro, bienvenido a tu servidor");
