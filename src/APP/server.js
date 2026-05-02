@@ -3,7 +3,7 @@ import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
 
-import indexrouter from "../routes/index.routes";
+import indexrouter from "../routes/index.routes.js";
 
 //settings
 

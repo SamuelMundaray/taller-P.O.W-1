@@ -1,4 +1,4 @@
-import bgservice from "./boardGamesService";
+import bgservice from "./boardGamesService.js";
 
 const boardGamesController = {};
 

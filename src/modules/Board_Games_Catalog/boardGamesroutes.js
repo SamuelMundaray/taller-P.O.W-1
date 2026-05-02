@@ -1,5 +1,5 @@
 import { Router } from "express";
-import bgcontroller from "./boardGamesController";
+import bgcontroller from "./boardGamesController.js";
 
 const gamesRouter = Router();
 
