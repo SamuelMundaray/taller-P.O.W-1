@@ -16,10 +16,10 @@ boardGamesService.getBoardGameById = (id) => {
     return null;
 }
 
-boardGamesService.addBoardGame = (gameID,name,minplayers,maxplayers,duaration,dateAdd,currentStatus) => {
+boardGamesService.addBoardGame = (name,minplayers,maxplayers,duaration,dateAdd,currentStatus) => {
     const game = {
         id: gameId++,
-        gameID,
+        gameID: gameId,
         name,
         minplayers,
         maxplayers,
@@ -31,10 +31,9 @@ boardGamesService.addBoardGame = (gameID,name,minplayers,maxplayers,duaration,da
     return game;
 }
 
-boardGamesService.updateBoardGame = (id, new_gameID,new_name,new_minplayers,new_maxplayers,new_duaration,new_dateAdd,new_currentStatus) => {
+boardGamesService.updateBoardGame = (id,new_name,new_minplayers,new_maxplayers,new_duaration,new_dateAdd,new_currentStatus) => {
   for (let game of boardGames) {
     if (game.id === id) {
-      game.gameID = new_gameID;
       game.name = new_name;
       game.minplayers = new_minplayers;
       game.maxplayers = new_maxplayers;
@@ -56,3 +55,5 @@ boardGamesService.deleteBoardGame = (id) => {
 }
 return false;
 }
+
+export default boardGamesService;
