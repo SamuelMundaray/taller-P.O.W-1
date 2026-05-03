@@ -9,14 +9,14 @@ boardGamesService.getAllBoardGames = () => {
 
 boardGamesService.getBoardGameById = (id) => {
     for (let game of boardGames) {
-        if (game.id === id) {
+        if (game.id == id) {
             return game;
         }
     }
     return null;
 }
 
-boardGamesService.addBoardGame = (name,minplayers,maxplayers,duaration,dateAdd,currentStatus) => {
+boardGamesService.addBoardGame = (name,minplayers,maxplayers,duration,dateAdd,currentStatus) => {
     const game = {
         id: gameId++,
         gameID: gameId,
@@ -31,7 +31,7 @@ boardGamesService.addBoardGame = (name,minplayers,maxplayers,duaration,dateAdd,c
     return game;
 }
 
-boardGamesService.updateBoardGame = (id,new_name,new_minplayers,new_maxplayers,new_duaration,new_dateAdd,new_currentStatus) => {
+boardGamesService.updateBoardGame = (id,new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus) => {
   for (let game of boardGames) {
     if (game.id === id) {
       game.name = new_name;
