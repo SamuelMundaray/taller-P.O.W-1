@@ -24,10 +24,6 @@ app.use(morgan("combined"));
 //Routes
 
 
-app.listen(app.get("port"),()=>{
-    console.log("Servidor escuchando en el puerto",app.get("port"));
-});
-
 
 app.use("/api",indexrouter);
 
