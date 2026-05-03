@@ -20,7 +20,6 @@ boardGamesService.getBoardGameById = (id) => {
 boardGamesService.addBoardGame = (name,minplayers,maxplayers,duration,dateAdd,currentStatus) => {
     const game = {
         id: gameId,
-        gameID: gameId,
         name,
         minplayers,
         maxplayers,
@@ -33,21 +32,41 @@ boardGamesService.addBoardGame = (name,minplayers,maxplayers,duration,dateAdd,cu
     return game;
 }
 
-boardGamesService.updateBoardGame = (id,new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus) => {
+boardGamesService.updateBoardGame = (id, name, minplayers, maxplayers, duration, dateAdd, currentStatus) => {
+  const index = boardGames.findIndex(game => game.id == id);
+
+  if (index !== -1) {
+    const nuevosDatos = { name, minplayers, maxplayers, duration, dateAdd, currentStatus };
+
+    Object.keys(nuevosDatos).forEach(key => nuevosDatos[key] === undefined && delete nuevosDatos[key]);
+
+    boardGames[index] = { 
+      ...boardGames[index], 
+      ...nuevosDatos 
+    };
+
+    return boardGames[index];
+  }
+  return null;
+};
+
+/*boardGamesService.updateBoardGame = (id,new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus) => {
   const targetId = Number(id);
   for (let game of boardGames) {
     if (game.id === targetId) {
+      boardGames.splice(boardGames.indexOf(game), 1);
       game.name = new_name;
       game.minplayers = new_minplayers;
       game.maxplayers = new_maxplayers;
       game.duration = new_duration;
       game.dateAdd = new_dateAdd;
       game.currentStatus = new_currentStatus;
+      boardGames.push(game);
       return game;
     }
 }
 return null;
-}
+}*/
 
 boardGamesService.deleteBoardGame = (id) => {
   const targetId = Number(id);

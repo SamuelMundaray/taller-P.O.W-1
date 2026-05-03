@@ -28,8 +28,8 @@ boardGamesController.addBoardGame = (req, res) => {
 
 boardGamesController.updateBoardGame = (req, res) => {
   const IDgame = req.params.IDgame;
-  const {new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus} = req.body;
-  const game = bgservice.updateBoardGame(IDgame, new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus);
+  const {name,minplayers,maxplayers,duration,dateAdd,currentStatus} = req.body;
+  const game = bgservice.updateBoardGame(IDgame, name,minplayers,maxplayers,duration,dateAdd,currentStatus);
   if (game) {
     res.status(200).send({game: game});
   } else {
