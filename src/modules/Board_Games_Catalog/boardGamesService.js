@@ -8,8 +8,9 @@ boardGamesService.getAllBoardGames = () => {
 }
 
 boardGamesService.getBoardGameById = (id) => {
+    const targetId = Number(id);
     for (let game of boardGames) {
-        if (game.id == id) {
+        if (game.id === targetId) {
             return game;
         }
     }
@@ -18,26 +19,28 @@ boardGamesService.getBoardGameById = (id) => {
 
 boardGamesService.addBoardGame = (name,minplayers,maxplayers,duration,dateAdd,currentStatus) => {
     const game = {
-        id: gameId++,
+        id: gameId,
         gameID: gameId,
         name,
         minplayers,
         maxplayers,
-        duaration,
+        duration,
         dateAdd,
         currentStatus
     };
+    gameId++;
     boardGames.push(game);
     return game;
 }
 
 boardGamesService.updateBoardGame = (id,new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus) => {
+  const targetId = Number(id);
   for (let game of boardGames) {
-    if (game.id === id) {
+    if (game.id === targetId) {
       game.name = new_name;
       game.minplayers = new_minplayers;
       game.maxplayers = new_maxplayers;
-      game.duaration = new_duaration;
+      game.duration = new_duration;
       game.dateAdd = new_dateAdd;
       game.currentStatus = new_currentStatus;
       return game;
@@ -47,8 +50,9 @@ return null;
 }
 
 boardGamesService.deleteBoardGame = (id) => {
+  const targetId = Number(id);
   for (let game of boardGames) {
-    if (game.id === id) {
+    if (game.id === targetId) {
       boardGames.splice(boardGames.indexOf(game), 1);
       return true;
     }

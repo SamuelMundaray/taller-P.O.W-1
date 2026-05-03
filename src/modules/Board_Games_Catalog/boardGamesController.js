@@ -22,14 +22,14 @@ boardGamesController.getBoardGameById = (req, res) => {
 
 boardGamesController.addBoardGame = (req, res) => {
   const {name,minplayers,maxplayers,duration,dateAdd,currentStatus} = req.body;
-  const game = bgservice.addBoardGame(name,minplayers,maxplayers,duaration,dateAdd,currentStatus);
+  const game = bgservice.addBoardGame(name,minplayers,maxplayers,duration,dateAdd,currentStatus);
   res.status(201).send({game: game});
 }
 
 boardGamesController.updateBoardGame = (req, res) => {
   const IDgame = req.params.IDgame;
-  const {new_gameID,new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus} = req.body;
-  const game = bgservice.updateBoardGame(IDgame, new_gameID,new_name,new_minplayers,new_maxplayers,new_duaration,new_dateAdd,new_currentStatus);
+  const {new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus} = req.body;
+  const game = bgservice.updateBoardGame(IDgame, new_name,new_minplayers,new_maxplayers,new_duration,new_dateAdd,new_currentStatus);
   if (game) {
     res.status(200).send({game: game});
   } else {
